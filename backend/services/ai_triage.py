@@ -7,8 +7,8 @@ import base64
 load_dotenv()
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
-text_model = genai.GenerativeModel("gemini-1.5-flash")
-vision_model = genai.GenerativeModel("gemini-1.5-flash")
+text_model = genai.GenerativeModel("gemini-2.5-flash")
+vision_model = genai.GenerativeModel("gemini-2.5-flash")
 
 def analyze_accident(description: str, image_data: bytes = None) -> dict:
     """

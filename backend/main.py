@@ -36,8 +36,8 @@ def root():
         "message": "Road Accident Alert System API",
         "docs": "/docs",
         "websockets": {
-            "dashboard": "ws://road-accident-alert-system-production.up.railway.app/ws/dashboard",
-            "responder": "ws://road-accident-alert-system-production.up.railway.app/ws/responder/{id}"
+            "dashboard": "wss://road-accident-alert-system-production.up.railway.app/ws/dashboard",
+            "responder": "wss://road-accident-alert-system-production.up.railway.app/ws/responder/{id}"
         },
         "endpoints": {
             "report_accident": "POST /accidents/report",
