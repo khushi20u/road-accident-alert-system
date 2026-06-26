@@ -6,6 +6,7 @@ import "leaflet/dist/leaflet.css";
 
 const SEVERITY_COLORS = { critical: "#ef4444", medium: "#f59e0b", low: "#22c55e" };
 const SEVERITY_RADIUS = { critical: 18, medium: 12, low: 8 };
+const WS_BASE = import.meta.env.VITE_WS_URL || "ws://localhost:8000";
 
 export default function Dashboard() {
   const [accidents, setAccidents] = useState([]);
@@ -13,7 +14,7 @@ export default function Dashboard() {
   const [alerts, setAlerts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const { isConnected, lastMessage } = useWebSocket("ws://localhost:8000/ws/dashboard");
+  const { isConnected, lastMessage } = useWebSocket(`${WS_BASE}/ws/dashboard`);
 
   useEffect(() => {
     Promise.all([getActiveAccidents(), getStats()])
