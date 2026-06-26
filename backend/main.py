@@ -13,7 +13,7 @@ app = FastAPI(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=["http://localhost:5173", "http://localhost:3000", "https://road-accident-alert-system.vercel.app/"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -36,8 +36,8 @@ def root():
         "message": "Road Accident Alert System API",
         "docs": "/docs",
         "websockets": {
-            "dashboard": "ws://localhost:8000/ws/dashboard",
-            "responder": "ws://localhost:8000/ws/responder/{id}"
+            "dashboard": "ws://road-accident-alert-system-production.up.railway.app/ws/dashboard",
+            "responder": "ws://road-accident-alert-system-production.up.railway.app/ws/responder/{id}"
         },
         "endpoints": {
             "report_accident": "POST /accidents/report",
