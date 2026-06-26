@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import accidents
@@ -27,6 +28,7 @@ def startup():
     db = next(get_db())
     seed_responders(db)
     print("✅ Road Accident Alert System running")
+    print("GEMINI_API_KEY present:", bool(os.getenv("GEMINI_API_KEY")))
 
 @app.get("/")
 def root():
