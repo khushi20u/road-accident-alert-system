@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useWebSocket } from "../hooks/useWebSocket";
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 const RESPONDER_CODES = {
   "AIIMS-001": { id: 1, name: "AIIMS Bhopal", type: "hospital" },
@@ -287,9 +287,11 @@ export default function ResponderPortal() {
   const [isAvailable,   setIsAvailable]   = useState(true);
   const [acceptedCount, setAcceptedCount] = useState(0);
 
+  const WS_BASE = import.meta.env.VITE_WS_URL || "ws://localhost:8000";
+
   const wsUrl = responder
-    ? `ws://localhost:8000/ws/responder/${responder.id}`
-    : "ws://localhost:8000/ws/dashboard";
+  ? `${WS_BASE}/ws/responder/${responder.id}`
+  : `${WS_BASE}/ws/dashboard`;
 
   const { isConnected, lastMessage } = useWebSocket(wsUrl);
 
